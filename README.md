@@ -45,6 +45,7 @@ Options:
 
 - `-s/--silent`: Do not print the jq program to standard error
 - `-o/--output`: Output just the jq program, do not run it
+- `-v/--verbose`: Show the prompt sent to the model and the response
 - `-m/--model X`: Use a model other than the configured LLM default model
 - `-/--length X`: Use a length of the input other than 1024 as the example
 
