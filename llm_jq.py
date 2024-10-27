@@ -24,7 +24,10 @@ def register_commands(cli):
     @click.option("-l", "--length", help="Example length to use", default=1024)
     @click.option("-o", "--output", help="Just show the jq program", is_flag=True)
     @click.option("-s", "--silent", help="Don't output jq program", is_flag=True)
-    def jq(description, model_id, length, output, silent):
+    @click.option(
+        "-v", "--verbose", help="Verbose output of prompt and response", is_flag=True
+    )
+    def jq(description, model_id, length, output, silent, verbose):
         "Describe a jq program to run"
         model = llm.get_model(model_id)
 
@@ -38,6 +41,12 @@ def register_commands(cli):
         if example:
             prompt += "\n\nExample JSON snippet:\n" + example.decode()
 
+        if verbose:
+            click.echo(
+                click.style(f"Prompt:\n{prompt}", fg="green", bold=True),
+                err=True,
+            )
+
         program = (
             model.prompt(
                 prompt,
@@ -46,6 +55,12 @@ def register_commands(cli):
             .text()
             .strip()
         )
+
+        if verbose:
+            click.echo(
+                click.style(f"Response:\n{program}", fg="green", bold=True),
+                err=True,
+            )
 
         if output or not is_pipe:
             click.echo(program)
@@ -90,7 +105,7 @@ def register_commands(cli):
             return_code = process.wait()
 
             # Output the program at the end
-            if not silent:
+            if not silent and not verbose:
                 click.echo(
                     click.style(f"{program}", fg="blue", bold=True),
                     err=True,
