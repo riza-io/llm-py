@@ -43,6 +43,10 @@ def register_commands(cli):
 
         if verbose:
             click.echo(
+                click.style(f"System:\n{SYSTEM_PROMPT}", fg="yellow", bold=True),
+                err=True,
+            )
+            click.echo(
                 click.style(f"Prompt:\n{prompt}", fg="green", bold=True),
                 err=True,
             )
