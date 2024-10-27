@@ -7,6 +7,8 @@
 
 Write and execute jq programs with the help of LLM
 
+See [Run a prompt to generate and execute jq programs using llm-jq](https://simonwillison.net/2024/Oct/27/llm-jq/) for background on this project.
+
 ## Installation
 
 Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
