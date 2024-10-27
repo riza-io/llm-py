@@ -28,7 +28,15 @@ def register_commands(cli):
         "-v", "--verbose", help="Verbose output of prompt and response", is_flag=True
     )
     def jq(description, model_id, length, output, silent, verbose):
-        "Describe a jq program to run"
+        """
+        Pipe JSON data into this tool and provide a description of a
+        jq program you want to run against that data.
+
+        Example usage:
+
+        \b
+          cat data.json | llm jq "Just the first and last names"
+        """
         model = llm.get_model(model_id)
 
         is_pipe = not sys.stdin.isatty()
