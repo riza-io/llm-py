@@ -51,7 +51,7 @@ Options:
 - `-o/--output`: Output just the jq program, do not run it
 - `-v/--verbose`: Show the prompt sent to the model and the response
 - `-m/--model X`: Use a model other than the configured LLM default model
-- `-/--length X`: Use a length of the input other than 1024 as the example
+- `-l/--length X`: Use a length of the input other than 1024 as the example
 
 By default, the first 1024 bytes of JSON will be sent to the model as an example along with your description. You can use `-l` to send more or less example data.
 
