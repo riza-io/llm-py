@@ -1,6 +1,6 @@
 [project]
 name = "llm-jq"
-version = "0.1"
+version = "0.1.1"
 description = "Write and execute jq programs with the help of LLM"
 readme = "README.md"
 authors = [{name = "Simon Willison"}]
