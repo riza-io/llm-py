@@ -37,6 +37,8 @@ Output:
     "count": 2
   }
 ]
+```
+```
 group_by(.user.login) | map({login: .[0].user.login, count: length}) | sort_by(-.count) | .[0:3]
 ```
 The JSON is printed to standard output, the jq program is printed to standard error.
